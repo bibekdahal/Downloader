@@ -1,0 +1,36 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Downloader"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Class="Downloader.MainPage"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel VerticalAlignment="Top" Margin="50" Name="StartView">
+            <TextBox Name="DownloadPathBox" FontSize="18"/>
+            <Button FontSize="22" Content="Start Download" Click="Button_Click_1"/>
+        </StackPanel>
+        <StackPanel Name="DownloadView" Margin="50, 50, 50, 0" Visibility="Collapsed">
+            <StackPanel>
+                <Canvas x:Name="GraphView" Height="120" Background="Azure">
+
+                    <Line X1="0" Y1="{Binding ActualHeight, ElementName=linegraphCanvas}" X2="{Binding ActualWidth, ElementName=linegraphCanvas}" Y2="{Binding ActualHeight, ElementName=linegraphCanvas}" 
+                          Stroke="Yellow" StrokeThickness="1.5" />
+                    <Line X1="0" Y1="0" X2="0" Y2="{Binding ActualHeight, ElementName=linegraphCanvas}" 
+                          Stroke="Yellow" StrokeThickness="1.5" />
+                </Canvas>
+
+                <!--Button Content="Pause/Resume" FontSize="28" Click="Button_Click"/-->
+                <TextBlock x:Name="SpeedView" FontSize="16" />
+                <TextBlock x:Name="InfoView" FontSize="16" />
+                <ProgressBar x:Name="ProgressView" Height="30" Foreground="Green" />
+                <Button HorizontalAlignment="Right" Margin="0,2,20,0" Content="Cancel" FontSize="22" Click="CancelDownloadClick" />
+
+            </StackPanel>
+            <StackPanel x:Name="SegmentsView" Margin="0,50,0,0" />
+            <TextBlock x:Name="LogView" FontSize="22" Margin="50"/>
+        </StackPanel>
+    </Grid>
+</Page>
